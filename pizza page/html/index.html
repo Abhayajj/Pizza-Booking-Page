@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gupta Pizza Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff5733;
+            animation: fadeInDown 2s;
+        }
+        .dropdown {
+            margin-top: 30px;
+            animation: fadeInUp 2s;
+        }
+        .dropdown-toggle {
+            font-size: 2em;
+            color: #fff;
+            background-color: #ff5733;
+            border: none;
+            padding: 15px 30px;
+            transition: background-color 0.3s;
+        }
+        .dropdown-toggle:hover {
+            background-color: #e64c2c;
+        }
+        .dropdown-menu {
+            font-size: 1.5em;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Gupta Pizza Store</h1>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            We Offer
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/menus/veg.html">Veg Pizza</a>
+            <a class="dropdown-item" href="/menus/nonveg.html">Non Veg Pizza</a>
+            <a class="dropdown-item" href="/menus/combo.html">Combos</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza</title>
+</head>
+<link rel="stylesheet" href="/css/style.css">
+<body>
+     <br><h1>Gupta Pizza Store</h1>
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <br><br>
+          <h1> <br><br>We Offer</h1>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/menus/veg.html">Veg Pizza</a></li>
+          <li><a class="dropdown-item" href="/menus/nonveg.html">Non Veg Pizza</a></li>
+          <li><a class="dropdown-item" href="/menus/combo.html">Combos</a></li>
+        </ul>
+      </div>
+   
+      
+       
+    </body>
+</html> -->
