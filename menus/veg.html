@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetarian Pizza Menu - Gupta's Pizzeria</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Explore our delicious range of fresh, healthy, and premium vegetarian woodfired pizzas. Customize toppings and crusts online.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS (rel path) -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar-custom" id="main-navbar">
+        <a href="../index.html" class="nav-brand">
+            <i data-lucide="pizza"></i> Gupta's <span>Pizzeria</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="veg.html" class="active">Veg Pizzas</a></li>
+                <li><a href="nonveg.html">Non-Veg</a></li>
+                <li><a href="combo.html">Combos</a></li>
+            </ul>
+        </nav>
+        <div class="nav-controls">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                <i data-lucide="moon" id="theme-icon"></i>
+            </button>
+            <button class="cart-toggle-btn" id="cart-toggle" aria-label="Open Cart">
+                <i data-lucide="shopping-basket"></i>
+                <span class="cart-badge" id="cart-badge-count" style="display: none;">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="menu-container">
+        <div class="section-header">
+            <span class="section-tag">Healthy & Fresh</span>
+            <h2 class="section-title">Vegetarian Pizza Menu</h2>
+        </div>
+
+        <div class="pizzas-grid">
+            <!-- Pizza Card 1 -->
+            <div class="pizza-card">
+                <div class="pizza-image-wrap">
+                    <span class="tag-badge veg"><i data-lucide="leaf"></i> Vegetarian</span>
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&q=80&w=600" alt="Margherita Pizza" class="pizza-card-img">
+                </div>
+                <div class="pizza-details">
+                    <h2>Margherita Pizza</h2>
+                    <p class="pizza-desc">The absolute Italian classic: rich house-made marinara sauce, fresh hand-torn mozzarella slices, extra virgin olive oil, and fresh basil leaves.</p>
+                    <div class="pizza-footer">
+                        <span class="pizza-price">$12.99</span>
+                        <div>
+                            <button class="btn-card btn-card-customize customize-pizza-btn" 
+                                    data-id="veg_margherita" 
+                                    data-name="Margherita Pizza" 
+                                    data-price="12.99" 
+                                    data-img="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&q=80&w=600"
+                                    data-desc="Standard classic Italian Margherita with rich marinara, melted mozzarella, olive oil, and fresh basil leaves.">
+                                Customize
+                            </button>
+                            <button class="btn-card btn-card-add add-to-cart-direct-btn" 
+                                    data-id="veg_margherita" 
+                                    data-name="Margherita Pizza" 
+                                    data-price="12.99" 
+                                    data-img="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&q=80&w=600">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza Card 2 -->
+            <div class="pizza-card">
+                <div class="pizza-image-wrap">
+                    <span class="tag-badge veg"><i data-lucide="leaf"></i> Vegetarian</span>
+                    <img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&q=80&w=600" alt="Veggie Delight Pizza" class="pizza-card-img">
+                </div>
+                <div class="pizza-details">
+                    <h2>Veggie Delight Pizza</h2>
+                    <p class="pizza-desc">A colorful medley of crisp golden corn, sweet red and green bell peppers, hand-cut red onions, earthy button mushrooms, and black Kalamata olives.</p>
+                    <div class="pizza-footer">
+                        <span class="pizza-price">$14.99</span>
+                        <div>
+                            <button class="btn-card btn-card-customize customize-pizza-btn" 
+                                    data-id="veg_delight" 
+                                    data-name="Veggie Delight Pizza" 
+                                    data-price="14.99" 
+                                    data-img="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&q=80&w=600"
+                                    data-desc="A supreme garden combination of crispy bell peppers, sweet corn, onions, mushrooms, and olives.">
+                                Customize
+                            </button>
+                            <button class="btn-card btn-card-add add-to-cart-direct-btn" 
+                                    data-id="veg_delight" 
+                                    data-name="Veggie Delight Pizza" 
+                                    data-price="14.99" 
+                                    data-img="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&q=80&w=600">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza Card 3 -->
+            <div class="pizza-card">
+                <div class="pizza-image-wrap">
+                    <span class="tag-badge veg"><i data-lucide="leaf"></i> Vegetarian</span>
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600" alt="Four Cheese Pizza" class="pizza-card-img">
+                </div>
+                <div class="pizza-details">
+                    <h2>Four Cheese Pizza</h2>
+                    <p class="pizza-desc">A decadent white pizza loaded with cheese goodness: premium mozzarella, sharp cheddar, aged parmesan shavings, and crumbly blue gorgonzola.</p>
+                    <div class="pizza-footer">
+                        <span class="pizza-price">$15.99</span>
+                        <div>
+                            <button class="btn-card btn-card-customize customize-pizza-btn" 
+                                    data-id="veg_cheese" 
+                                    data-name="Four Cheese Pizza" 
+                                    data-price="15.99" 
+                                    data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600"
+                                    data-desc="Rich cream base with mozzarella, yellow cheddar, parmesan shavings, and gorgonzola blue cheese.">
+                                Customize
+                            </button>
+                            <button class="btn-card btn-card-add add-to-cart-direct-btn" 
+                                    data-id="veg_cheese" 
+                                    data-name="Four Cheese Pizza" 
+                                    data-price="15.99" 
+                                    data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza Card 4 -->
+            <div class="pizza-card">
+                <div class="pizza-image-wrap">
+                    <span class="tag-badge veg"><i data-lucide="leaf"></i> Vegetarian</span>
+                    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&q=80&w=600" alt="Farmhouse Pesto Pizza" class="pizza-card-img">
+                </div>
+                <div class="pizza-details">
+                    <h2>Farmhouse Pesto Pizza</h2>
+                    <p class="pizza-desc">Herby basil pesto sauce base, juicy cherry tomato halves, premium baby spinach, crumbled feta cheese, and topped with fresh arugula.</p>
+                    <div class="pizza-footer">
+                        <span class="pizza-price">$13.99</span>
+                        <div>
+                            <button class="btn-card btn-card-customize customize-pizza-btn" 
+                                    data-id="veg_pesto" 
+                                    data-name="Farmhouse Pesto Pizza" 
+                                    data-price="13.99" 
+                                    data-img="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&q=80&w=600"
+                                    data-desc="Basil pesto, cherry tomatoes, baby spinach, crumbled Greek feta, toasted pine nuts, and fresh arugula.">
+                                Customize
+                            </button>
+                            <button class="btn-card btn-card-add add-to-cart-direct-btn" 
+                                    data-id="veg_pesto" 
+                                    data-name="Farmhouse Pesto Pizza" 
+                                    data-price="13.99" 
+                                    data-img="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&q=80&w=600">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pizza Customizer Modal -->
+    <div class="modal-overlay" id="pizza-customizer-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Customize Your Pizza</h3>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-pizza-preview">
+                    <img src="" alt="Custom Pizza" class="modal-pizza-img" id="modal-pizza-image">
+                    <div class="modal-pizza-info">
+                        <h3 id="modal-pizza-title">Pizza Name</h3>
+                        <p id="modal-pizza-description">Pizza Description...</p>
+                    </div>
+                </div>
+                
+                <!-- Sizes Selector -->
+                <div class="customizer-section">
+                    <h4 class="customizer-title">Select Size</h4>
+                    <div class="pill-selector" id="size-selector-group">
+                        <input type="radio" id="size-small" name="pizza-size" value="Personal" data-add="0">
+                        <label for="size-small" class="pill-label">Personal (9")</label>
+                        
+                        <input type="radio" id="size-medium" name="pizza-size" value="Medium" data-add="2.00" checked>
+                        <label for="size-medium" class="pill-label">Medium (12") +$2.00</label>
+                        
+                        <input type="radio" id="size-large" name="pizza-size" value="Large" data-add="4.00">
+                        <label for="size-large" class="pill-label">Large (15") +$4.00</label>
+                    </div>
+                </div>
+                
+                <!-- Crusts Selector -->
+                <div class="customizer-section">
+                    <h4 class="customizer-title">Choose Crust</h4>
+                    <div class="pill-selector" id="crust-selector-group">
+                        <input type="radio" id="crust-classic" name="pizza-crust" value="Classic Hand-Tossed" data-add="0" checked>
+                        <label for="crust-classic" class="pill-label">Classic Hand-Tossed</label>
+                        
+                        <input type="radio" id="crust-thin" name="pizza-crust" value="Wheat Thin Crust" data-add="0">
+                        <label for="crust-thin" class="pill-label">Thin Crust</label>
+                        
+                        <input type="radio" id="crust-cheese" name="pizza-crust" value="Cheese Burst" data-add="2.50">
+                        <label for="crust-cheese" class="pill-label">Cheese Burst +$2.50</label>
+                    </div>
+                </div>
+                
+                <!-- Toppings Selector -->
+                <div class="customizer-section">
+                    <h4 class="customizer-title">Add Extra Toppings (+$0.99 each)</h4>
+                    <div class="options-grid" id="toppings-selector-group">
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-cheese" value="Extra Cheese" data-price="0.99">
+                            <label for="topping-cheese" class="checkbox-label">Extra Cheese <span>+$0.99</span></label>
+                        </div>
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-mushrooms" value="Mushrooms" data-price="0.99">
+                            <label for="topping-mushrooms" class="checkbox-label">Mushrooms <span>+$0.99</span></label>
+                        </div>
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-olives" value="Olives" data-price="0.99">
+                            <label for="topping-olives" class="checkbox-label">Olives <span>+$0.99</span></label>
+                        </div>
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-jalapenos" value="Jalapenos" data-price="0.99">
+                            <label for="topping-jalapenos" class="checkbox-label">Jalapenos <span>+$0.99</span></label>
+                        </div>
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-onions" value="Onions" data-price="0.99">
+                            <label for="topping-onions" class="checkbox-label">Onions <span>+$0.99</span></label>
+                        </div>
+                        <div class="checkbox-card">
+                            <input type="checkbox" id="topping-peppers" value="Bell Peppers" data-price="0.99">
+                            <label for="topping-peppers" class="checkbox-label">Bell Peppers <span>+$0.99</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <div class="modal-price-display">
+                    <span class="modal-price-label">Total Price</span>
+                    <span class="modal-price-val" id="modal-price-amount">$0.00</span>
+                </div>
+                <button class="btn-primary btn-modal-add" id="modal-add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Persistent Floating Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer-panel">
+        <div class="cart-header">
+            <h3><i data-lucide="shopping-cart"></i> Your Order</h3>
+            <button class="cart-close-btn" id="cart-close" aria-label="Close Cart">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Dynamically populated via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="promo-container">
+                <input type="text" class="promo-input" id="promo-code-input" placeholder="Enter Coupon Code (e.g. PIZZALOVER)">
+                <button class="promo-btn" id="promo-apply-btn">Apply</button>
+            </div>
+            <div id="promo-msg" class="promo-feedback" style="display: none;"></div>
+            
+            <div class="cart-summary-line">
+                <span>Subtotal</span>
+                <span class="price-val" id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="cart-summary-line" id="discount-row" style="display: none; color: #10b981;">
+                <span>Discount (<span id="discount-pct">0%</span>)</span>
+                <span class="price-val" id="cart-discount">-$0.00</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>GST & Tax (18%)</span>
+                <span class="price-val" id="cart-tax">$0.00</span>
+            </div>
+            <div class="cart-summary-line total">
+                <span>Total Amount</span>
+                <span class="price-val" id="cart-total">$0.00</span>
+            </div>
+            
+            <a href="../checkout.html" class="btn-primary btn-checkout" id="checkout-action-btn">
+                Proceed to Checkout <i data-lucide="credit-card"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Scripts (rel path) -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/cart.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Gupta's Pizzeria</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Complete your pizza order. Provide delivery details, review your cart summary, select payment, and track your pizza live.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar-custom" id="main-navbar">
+        <a href="index.html" class="nav-brand">
+            <i data-lucide="pizza"></i> Gupta's <span>Pizzeria</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menus/veg.html">Veg Pizzas</a></li>
+                <li><a href="menus/nonveg.html">Non-Veg</a></li>
+                <li><a href="menus/combo.html">Combos</a></li>
+            </ul>
+        </nav>
+        <div class="nav-controls">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                <i data-lucide="moon" id="theme-icon"></i>
+            </button>
+            <button class="cart-toggle-btn" id="cart-toggle" aria-label="Open Cart" style="display: none;">
+                <!-- Hide on checkout page to avoid duplicate view -->
+                <i data-lucide="shopping-basket"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Checkout Section -->
+    <div class="checkout-wrapper" id="checkout-form-panel">
+        
+        <!-- Left: Delivery Details Form -->
+        <div class="checkout-card">
+            <h2><i data-lucide="truck"></i> Delivery Information</h2>
+            <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" class="form-control" placeholder="Abhay Gupta" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email-address">Email Address</label>
+                        <input type="email" id="email-address" class="form-control" placeholder="abhay@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" class="form-control" placeholder="+91 98765 43210" pattern="^[+]?[0-9]{10,13}$" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-address">Delivery Address</label>
+                    <input type="text" id="delivery-address" class="form-control" placeholder="House/Flat No, Building, Street Name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" placeholder="New Delhi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pin Code</label>
+                        <input type="text" id="pincode" class="form-control" placeholder="110001" pattern="^[0-9]{6}$" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-options">
+                        <div class="payment-card">
+                            <input type="radio" id="pay-cod" name="payment-method" value="Cash on Delivery" checked>
+                            <label for="pay-cod" class="payment-label">
+                                <i data-lucide="banknote"></i>
+                                Cash on Delivery
+                            </label>
+                        </div>
+                        <div class="payment-card">
+                            <input type="radio" id="pay-card" name="payment-method" value="Card Payment">
+                            <label for="pay-card" class="payment-label">
+                                <i data-lucide="credit-card"></i>
+                                Card Payment
+                            </label>
+                        </div>
+                        <div class="payment-card">
+                            <input type="radio" id="pay-upi" name="payment-method" value="UPI Payment">
+                            <label for="pay-upi" class="payment-label">
+                                <i data-lucide="qr-code"></i>
+                                UPI (GPay/PhonePe)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px; justify-content: center;">
+                    Place Order <i data-lucide="check"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="checkout-card">
+            <h2><i data-lucide="shopping-bag"></i> Order Summary</h2>
+            <div id="checkout-summary-items" style="max-height: 350px; overflow-y: auto; margin-bottom: 20px;">
+                <!-- Filled dynamically -->
+            </div>
+            
+            <div class="cart-summary-line" style="margin-bottom: 10px;">
+                <span>Subtotal</span>
+                <span class="price-val" id="summary-subtotal">$0.00</span>
+            </div>
+            <div class="cart-summary-line" id="summary-discount-row" style="display: none; color: #10b981; margin-bottom: 10px;">
+                <span>Discount</span>
+                <span class="price-val" id="summary-discount">-$0.00</span>
+            </div>
+            <div class="cart-summary-line" style="margin-bottom: 10px;">
+                <span>GST & Tax (18%)</span>
+                <span class="price-val" id="summary-tax">$0.00</span>
+            </div>
+            <div class="cart-summary-line total">
+                <span>Total Amount</span>
+                <span class="price-val" id="summary-total">$0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Order Tracker Simulation (Shown on successful checkout submit) -->
+    <div class="tracker-wrapper" id="order-tracker-panel" style="display: none;">
+        <div class="tracker-card">
+            <div class="tracker-animation">
+                <i data-lucide="pizza" id="rotating-tracker-icon"></i>
+            </div>
+            <h2 class="tracker-title">Your Order is Placed!</h2>
+            <p class="tracker-desc" id="tracker-status-text">Connecting with kitchen to confirm your hot pizza...</p>
+            
+            <div class="stepper">
+                <div class="stepper-progress" id="stepper-progress-bar"></div>
+                
+                <div class="step-node active" id="step-1">
+                    <div class="step-circle"><i data-lucide="clipboard-check"></i></div>
+                    <div class="step-label">Confirmed</div>
+                </div>
+                <div class="step-node" id="step-2">
+                    <div class="step-circle"><i data-lucide="chef-hat"></i></div>
+                    <div class="step-label">Preparing</div>
+                </div>
+                <div class="step-node" id="step-3">
+                    <div class="step-circle"><i data-lucide="flame"></i></div>
+                    <div class="step-label">Baking</div>
+                </div>
+                <div class="step-node" id="step-4">
+                    <div class="step-circle"><i data-lucide="bike"></i></div>
+                    <div class="step-label">On Way</div>
+                </div>
+                <div class="step-node" id="step-5">
+                    <div class="step-circle"><i data-lucide="check-circle-2"></i></div>
+                    <div class="step-label">Delivered</div>
+                </div>
+            </div>
+            
+            <a href="index.html" class="btn-primary" style="margin-top: 20px; justify-content: center; display: inline-flex;">
+                Back to Home <i data-lucide="home"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Scripts -->
+    <script src="js/theme.js"></script>
+    <script>
+        // Initialize checkout summary rendering on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCheckoutSummary();
+            lucide.createIcons();
+        });
+
+        // Load cart details and render on page
+        function renderCheckoutSummary() {
+            const savedCart = localStorage.getItem('pizzeria-cart');
+            const savedPromo = localStorage.getItem('pizzeria-promo');
+            
+            const summaryContainer = document.getElementById('checkout-summary-items');
+            const subtotalNode = document.getElementById('summary-subtotal');
+            const discountRow = document.getElementById('summary-discount-row');
+            const discountValNode = document.getElementById('summary-discount');
+            const taxNode = document.getElementById('summary-tax');
+            const totalNode = document.getElementById('summary-total');
+            
+            if (!summaryContainer) return;
+            
+            let cart = [];
+            let activePromo = null;
+            
+            if (savedCart) {
+                try { cart = JSON.parse(savedCart); } catch(e) { cart = []; }
+            }
+            if (savedPromo) {
+                try { activePromo = JSON.parse(savedPromo); } catch(e) { activePromo = null; }
+            }
+            
+            if (cart.length === 0) {
+                // If cart is empty, redirect to menu
+                window.location.href = 'menus/veg.html';
+                return;
+            }
+            
+            summaryContainer.innerHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.style.borderBottom = '1px solid var(--surface-border)';
+                itemEl.style.paddingBottom = '12px';
+                itemEl.style.marginBottom = '12px';
+                
+                const toppingsText = item.toppings.length > 0 ? `<br><small style="color: var(--text-secondary)">Toppings: ${item.toppings.join(', ')}</small>` : '';
+                
+                itemEl.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" class="cart-item-img" style="width: 50px; height: 50px;">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name" style="font-size: 0.95em;">${item.name} <span style="font-weight: normal; color: var(--text-secondary);">x${item.quantity}</span></div>
+                        <div class="cart-item-customizations" style="font-size: 0.75em; line-height: 1.2;">Size: ${item.size} | Crust: ${item.crust}${toppingsText}</div>
+                        <div class="cart-item-row" style="margin-top: 5px;">
+                            <span class="cart-item-price" style="font-size: 0.9em;">$${itemTotal.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+                summaryContainer.appendChild(itemEl);
+            });
+            
+            // Calculate Discounts
+            let discount = 0;
+            if (activePromo) {
+                if (activePromo.type === 'percent') {
+                    discount = subtotal * (activePromo.value / 100);
+                } else if (activePromo.type === 'flat') {
+                    discount = Math.min(activePromo.value, subtotal);
+                }
+                
+                if (discountRow) discountRow.style.display = 'flex';
+                if (discountValNode) discountValNode.textContent = `-$${discount.toFixed(2)}`;
+            } else {
+                if (discountRow) discountRow.style.display = 'none';
+            }
+            
+            // Taxes & Total
+            const tax = (subtotal - discount) * 0.18;
+            const finalTotal = subtotal - discount + tax;
+            
+            if (subtotalNode) subtotalNode.textContent = `$${subtotal.toFixed(2)}`;
+            if (taxNode) taxNode.textContent = `$${tax.toFixed(2)}`;
+            if (totalNode) totalNode.textContent = `$${finalTotal.toFixed(2)}`;
+        }
+
+        // Handle submission, transition layout, and launch order status simulation
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            
+            // Clear cart from local storage
+            localStorage.removeItem('pizzeria-cart');
+            localStorage.removeItem('pizzeria-promo');
+            
+            // Hide Form & Summary panels
+            document.getElementById('checkout-form-panel').style.display = 'none';
+            
+            // Show Tracker Panel
+            const trackerPanel = document.getElementById('order-tracker-panel');
+            trackerPanel.style.display = 'block';
+            
+            // Trigger Tracker simulation
+            startTrackerSimulation();
+        }
+
+        // Order Tracker Animation & Progress Steps
+        function startTrackerSimulation() {
+            const steps = [
+                { percent: 0, text: "🍕 Order Confirmed! Directing to kitchen...", node: "step-1" },
+                { percent: 25, text: "👨‍🍳 Kitchen received! Chef is rolling the fresh dough...", node: "step-2" },
+                { percent: 50, text: "🔥 Into the flame! Baking in woodfire oven...", node: "step-3" },
+                { percent: 75, text: "🛵 Out for delivery! Riding fast to your address...", node: "step-4" },
+                { percent: 100, text: "🏡 Arrived! Check your doorstep for hot, fresh pizza!", node: "step-5" }
+            ];
+            
+            const progressBar = document.getElementById('stepper-progress-bar');
+            const statusText = document.getElementById('tracker-status-text');
+            const trackerIcon = document.getElementById('rotating-tracker-icon');
+            
+            let currentStepIdx = 0;
+            
+            // Execute step transitions every 3 seconds
+            const interval = setInterval(() => {
+                currentStepIdx++;
+                
+                if (currentStepIdx >= steps.length) {
+                    clearInterval(interval);
+                    // End state: static complete
+                    if (trackerIcon) trackerIcon.style.animation = 'none';
+                    return;
+                }
+                
+                const step = steps[currentStepIdx];
+                
+                // Update Progress Bar
+                if (progressBar) progressBar.style.width = `${step.percent}%`;
+                
+                // Update Status Description
+                if (statusText) statusText.textContent = step.text;
+                
+                // Update active node
+                const node = document.getElementById(step.node);
+                if (node) {
+                    node.classList.add('active');
+                }
+                
+                // Set previous node as completed
+                const prevNode = document.getElementById(steps[currentStepIdx - 1].node);
+                if (prevNode) {
+                    prevNode.classList.remove('active');
+                    prevNode.classList.add('completed');
+                }
+                
+                // Change tracker floating icon depending on status
+                if (trackerIcon) {
+                    if (currentStepIdx === 1) trackerIcon.setAttribute('data-lucide', 'chef-hat');
+                    if (currentStepIdx === 2) trackerIcon.setAttribute('data-lucide', 'flame');
+                    if (currentStepIdx === 3) trackerIcon.setAttribute('data-lucide', 'bike');
+                    if (currentStepIdx === 4) trackerIcon.setAttribute('data-lucide', 'check-circle-2');
+                    
+                    if (window.lucide) window.lucide.createIcons();
+                }
+                
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

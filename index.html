@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gupta's Pizzeria - Premium Artisanal Pizzas</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Welcome to Gupta's Pizzeria! Order fresh, woodfired, handcrafted pizzas online. Quick delivery, fresh ingredients, and premium combos.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar-custom" id="main-navbar">
+        <a href="index.html" class="nav-brand">
+            <i data-lucide="pizza"></i> Gupta's <span>Pizzeria</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menus/veg.html">Veg Pizzas</a></li>
+                <li><a href="menus/nonveg.html">Non-Veg</a></li>
+                <li><a href="menus/combo.html">Combos</a></li>
+            </ul>
+        </nav>
+        <div class="nav-controls">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                <i data-lucide="moon" id="theme-icon"></i>
+            </button>
+            <button class="cart-toggle-btn" id="cart-toggle" aria-label="Open Cart">
+                <i data-lucide="shopping-basket"></i>
+                <span class="cart-badge" id="cart-badge-count" style="display: none;">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <p class="hero-subtitle">Woodfired • Handcrafted • Delivered Hot</p>
+            <h1 class="hero-title">Experience the Art of Premium Pizza</h1>
+            <p class="hero-desc">Indulge in our range of artisanal pizzas made from fresh organic ingredients, house-made slow-simmered marinara, and premium fresh mozzarella. Hand-stretched and baked to perfection in our traditional woodfire oven.</p>
+            <div class="hero-btns">
+                <a href="menus/veg.html" class="btn-primary">
+                    Order Online <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="menus/combo.html" class="btn-secondary-custom">
+                    Explore Combos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="section-header">
+            <span class="section-tag">Our Menu Categories</span>
+            <h2 class="section-title">Freshly Baked Specialties</h2>
+        </div>
+        <div class="categories-grid">
+            <a href="menus/veg.html" class="category-card veg">
+                <div class="category-info">
+                    <h3>Veg Delights</h3>
+                    <p>Loaded with fresh greens, signature toppings, and premium cheeses.</p>
+                    <span class="category-link">Explore Veg <i data-lucide="chevron-right"></i></span>
+                </div>
+            </a>
+            <a href="menus/nonveg.html" class="category-card nonveg">
+                <div class="category-info">
+                    <h3>Meat Lovers</h3>
+                    <p>Topped with premium pepperoni, chicken wings, bacon, and juicy meatballs.</p>
+                    <span class="category-link">Explore Non-Veg <i data-lucide="chevron-right"></i></span>
+                </div>
+            </a>
+            <a href="menus/combo.html" class="category-card combo">
+                <div class="category-info">
+                    <h3>Signature Combos</h3>
+                    <p>The perfect meal combinations for parties, couples, or families.</p>
+                    <span class="category-link">Explore Combos <i data-lucide="chevron-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Persistent Floating Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer-panel">
+        <div class="cart-header">
+            <h3><i data-lucide="shopping-cart"></i> Your Order</h3>
+            <button class="cart-close-btn" id="cart-close" aria-label="Close Cart">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Dynamically populated via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="promo-container">
+                <input type="text" class="promo-input" id="promo-code-input" placeholder="Enter Coupon Code (e.g. PIZZALOVER)">
+                <button class="promo-btn" id="promo-apply-btn">Apply</button>
+            </div>
+            <div id="promo-msg" class="promo-feedback" style="display: none;"></div>
+            
+            <div class="cart-summary-line">
+                <span>Subtotal</span>
+                <span class="price-val" id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="cart-summary-line" id="discount-row" style="display: none; color: #10b981;">
+                <span>Discount (<span id="discount-pct">0%</span>)</span>
+                <span class="price-val" id="cart-discount">-$0.00</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>GST & Tax (18%)</span>
+                <span class="price-val" id="cart-tax">$0.00</span>
+            </div>
+            <div class="cart-summary-line total">
+                <span>Total Amount</span>
+                <span class="price-val" id="cart-total">$0.00</span>
+            </div>
+            
+            <a href="checkout.html" class="btn-primary btn-checkout" id="checkout-action-btn">
+                Proceed to Checkout <i data-lucide="credit-card"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
